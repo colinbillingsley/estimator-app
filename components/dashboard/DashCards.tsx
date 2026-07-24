@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardAction,
@@ -7,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { TrendUpIcon } from "@phosphor-icons/react";
 
 const DashCards = ({
   title,
@@ -15,23 +18,24 @@ const DashCards = ({
   footer,
 }: {
   title: string;
-  description: string;
-  content: string;
-  footer: string;
+  description?: string;
+  content: string | number;
+  footer?: string;
 }) => {
   return (
-    <Card>
+    <Card className={cn(`hover:cursor-default`)}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-        <CardAction>Card Action</CardAction>
+        {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent>
-        <p>{content}</p>
+        <p className={cn(`text-2xl font-bold`)}>{content}</p>
       </CardContent>
-      <CardFooter>
-        <p>{footer}</p>
-      </CardFooter>
+      {footer && (
+        <CardFooter>
+          <p>{footer}</p>
+        </CardFooter>
+      )}
     </Card>
   );
 };

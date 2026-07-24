@@ -13,7 +13,6 @@ import {
   UsersThreeIcon,
   AddressBookIcon,
 } from "@phosphor-icons/react";
-import Link from "next/link";
 import SideBarLink from "./SideBarLink";
 import { useState } from "react";
 
