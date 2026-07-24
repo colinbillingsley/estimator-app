@@ -11,6 +11,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Sidebar from "@/components/Sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { auth, currentUser } from "@clerk/nextjs/server";
 
 const oxaniumHeading = Oxanium({
   subsets: ["latin"],
@@ -24,12 +25,16 @@ export const metadata: Metadata = {
   description: "An estimator app with Clerk authentication.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isSignedIn = true;
+  // Use `currentUser()` to get the Backend `User` object
+  const user = await currentUser();
+
+  const isSignedIn = user ? true : false;
+
   return (
     <html
       lang="en"

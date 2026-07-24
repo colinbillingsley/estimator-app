@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <div
       lang="en"
-      className={cn("h-full", outfit.variable, oxaniumHeading.variable)}
+      className={cn("h-full w-full", outfit.variable, oxaniumHeading.variable)}
     >
       <div className="min-h-full flex flex-col bg-zinc-50 text-zinc-950 dark:bg-black dark:text-zinc-50">
         <Header />

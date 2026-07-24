@@ -21,10 +21,10 @@ const Header = async () => {
     organizationId: orgId,
   });
 
-  const currentDate = dayjs().format("dddd, MMMM D, YYYY");
+  const currentDate = dayjs().format("dddd, MMMM D");
   return (
-    <div className={cn(`p-2`)}>
-      <p className={cn(`text-lg font-semibold`)}>{organization.name}</p>
+    <div className={cn(`p-2 w-full`)}>
+      <p className={cn(`text-sm font-semibold mb-4`)}>{organization.name}</p>
       <p className={cn(`w-full`)}>{currentDate}</p>
       <p className={cn(`text-2xl font-bold`)}>
         Good morning, {user.firstName}!
