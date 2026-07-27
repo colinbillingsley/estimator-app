@@ -6,12 +6,12 @@ import {
   FilesIcon,
   FoldersIcon,
   InvoiceIcon,
-  PaperPlaneTiltIcon,
   SquaresFourIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   UsersThreeIcon,
   AddressBookIcon,
+  TrayArrowUpIcon,
 } from "@phosphor-icons/react";
 import SideBarLink from "./SideBarLink";
 import { useState } from "react";
@@ -45,7 +45,7 @@ const sidebarLinks = [
   {
     title: "Submissions",
     href: "/submissions",
-    icon: <PaperPlaneTiltIcon size={20} weight="light" />,
+    icon: <TrayArrowUpIcon size={20} weight="light" />,
   },
   {
     title: "Team",

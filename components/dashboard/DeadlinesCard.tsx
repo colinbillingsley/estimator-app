@@ -9,9 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { TrendUpIcon } from "@phosphor-icons/react";
 
-const DashCards = ({
+const DeadlinesCard = ({
   title,
   description,
   content,
@@ -19,7 +18,7 @@ const DashCards = ({
 }: {
   title: string;
   description?: string;
-  content: string | number;
+  content?: string[];
   footer?: string;
 }) => {
   return (
@@ -29,7 +28,17 @@ const DashCards = ({
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent>
-        <p className={cn(`text-2xl font-bold`)}>{content}</p>
+        {content && content.length > 0 ? (
+          <ul className={cn(`space-y-2`)}>
+            {content.map((item, index) => (
+              <li key={index} className={cn(`text-lg`)}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className={cn(`text-2xl font-bold`)}>No items</p>
+        )}
       </CardContent>
       {footer && (
         <CardFooter>
@@ -40,4 +49,4 @@ const DashCards = ({
   );
 };
 
-export default DashCards;
+export default DeadlinesCard;
