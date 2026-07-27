@@ -3,16 +3,32 @@ import React from "react";
 import MainContent from "../MainContent";
 import DashStatsCard from "./DashStatsCards";
 import DeadlinesCard from "./DeadlinesCard";
+import { Bid } from "@/types";
 
 const DashboardClient = () => {
-  const [bidsDueToday, setBidsDueToday] = React.useState([
-    "Woodland Hills",
-    "Range USA",
+  const [bidsDueToday, setBidsDueToday] = React.useState<Bid>([
+    {
+      name: "Woodland Hills",
+      generalContractors: ["Reeves & Young"],
+      dateDue: new Date(),
+    },
+    {
+      name: "Bailey Project",
+      generalContractors: ["Carter Group"],
+      dateDue: new Date(),
+    },
   ]);
-  const [bidsDueThisWeek, setBidsDueThisWeek] = React.useState([
-    "Station Pizza",
-    "Fogo De Chao",
-    "BJ's Restaurant & Brewhouse",
+  const [bidsDueThisWeek, setBidsDueThisWeek] = React.useState<Bid>([
+    {
+      name: "Dalts 100% DD Set",
+      generalContractors: ["Dowdle", "Carter Group", "Eshelman"],
+      dateDue: new Date(),
+    },
+    {
+      name: "Vagabond",
+      generalContractors: ["Carter Group", "Dowdle"],
+      dateDue: new Date(),
+    },
   ]);
 
   return (
