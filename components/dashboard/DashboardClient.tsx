@@ -38,10 +38,26 @@ const DashboardClient = () => {
         <div
           className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2`}
         >
-          <DashStatsCard title="Active Bids" content={8} />
-          <DashStatsCard title="Bids Due Soon" content={2} />
-          <DashStatsCard title="Quotes to Send" content={3} />
-          <DashStatsCard title="Pending Quotes" content={5} />
+          <DashStatsCard
+            title="Active Bids"
+            content={8}
+            footer={`+3 this month`}
+          />
+          <DashStatsCard
+            title="Bids Due Soon"
+            content={2}
+            footer={`+1 this week`}
+          />
+          <DashStatsCard
+            title="Quotes to Send"
+            content={3}
+            footer={`+2 this week`}
+          />
+          <DashStatsCard
+            title="Pending Quotes"
+            content={5}
+            footer={`-1 last month`}
+          />
         </div>
       </div>
 
@@ -51,12 +67,12 @@ const DashboardClient = () => {
         </h2>
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-2`}>
           <DeadlinesCard
-            title="Bids Due Today"
+            title="Bids Needing Attention"
             content={bidsDueToday}
             description={`Bids due today: ${bidsDueToday.length}`}
           />
           <DeadlinesCard
-            title="Bids Due This Week"
+            title="Upcoming Bids"
             content={bidsDueThisWeek}
             description={`Bids due this week: ${bidsDueThisWeek.length}`}
           />

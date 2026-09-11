@@ -12,6 +12,12 @@ import {
   UsersThreeIcon,
   AddressBookIcon,
   TrayArrowUpIcon,
+  KanbanIcon,
+  ClockCounterClockwiseIcon,
+  ChartDonutIcon,
+  BlueprintIcon,
+  PenNibIcon,
+  HammerIcon,
 } from "@phosphor-icons/react";
 import SideBarLink from "./SideBarLink";
 import { useState } from "react";
@@ -28,24 +34,24 @@ const sidebarLinks = [
     icon: <AddressBookIcon size={20} weight="light" />,
   },
   {
-    title: "Estimates",
-    href: "/estimates",
-    icon: <FilesIcon size={20} weight="light" />,
-  },
-  {
-    title: "Projects",
-    href: "/projects",
-    icon: <FoldersIcon size={20} weight="light" />,
-  },
-  {
     title: "Quotes",
     href: "/quotes",
+    icon: <PenNibIcon size={20} weight="light" />,
+  },
+  {
+    title: "Supplier Quotes",
+    href: "/supplier-quotes",
     icon: <InvoiceIcon size={20} weight="light" />,
   },
   {
-    title: "Submissions",
-    href: "/submissions",
-    icon: <TrayArrowUpIcon size={20} weight="light" />,
+    title: "Jobs",
+    href: "/jobs",
+    icon: <HammerIcon size={20} weight="light" />,
+  },
+  {
+    title: "Reports",
+    href: "/reports",
+    icon: <ChartDonutIcon size={20} weight="light" />,
   },
   {
     title: "Team",
@@ -60,7 +66,7 @@ const Sidebar = () => {
   return (
     <div
       className={cn(
-        `relative w-18 md:w-36 ${sidebarOpen ? "md:w-36" : "md:w-18"} bg-secondary px-2 py-4 flex flex-col items-center justify-between gap-6 transition-all duration-200`,
+        `relative w-18 md:w-48 ${sidebarOpen ? "md:w-48" : "md:w-18"} bg-secondary px-2 py-4 flex flex-col items-center justify-between gap-6 transition-all duration-200`,
       )}
     >
       <div className="flex items-center justify-center gap-2 w-full overflow-hidden">
@@ -69,9 +75,9 @@ const Sidebar = () => {
         </div>
 
         <span
-          className={`hidden ${sidebarOpen ? "md:block" : "md:hidden"} font-heading font-medium uppercase text-sm`}
+          className={`hidden ${sidebarOpen ? "md:block" : "md:hidden"} font-heading font-bold uppercase text-sm`}
         >
-          Estimator App
+          BidFlow
         </span>
       </div>
 

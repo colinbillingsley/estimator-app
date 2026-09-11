@@ -1,11 +1,11 @@
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
 
-const Projects = async () => {
+const Supplier_Quotes = async () => {
   // Redirects to the sign-in route if the user is not signed in
   await auth.protect();
 
-  return <div>Projects</div>;
+  return <div>Supplier Quotes</div>;
 };
 
-export default Projects;
+export default Supplier_Quotes;

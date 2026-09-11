@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import {
-  FilesIcon,
-  FoldersIcon,
+  AddressBookIcon,
+  PenNibIcon,
   PlusIcon,
   TriangleIcon,
 } from "@phosphor-icons/react";
@@ -73,19 +73,19 @@ const CreateNewButton = ({
       >
         <Link
           onClick={() => setCreateOpen(false)}
-          href=""
+          href="/quotes/new"
           className="flex items-center gap-2 p-3 hover:bg-muted transition-all duration-200"
         >
-          <FilesIcon size={20} weight="light" />
-          <span className="text-sm">New Estimate</span>
+          <PenNibIcon size={20} weight="light" />
+          <span className="text-sm">New Quote</span>
         </Link>
         <Link
           onClick={() => setCreateOpen(false)}
           href=""
           className="flex items-center gap-2 p-3 hover:bg-muted transition-all duration-200"
         >
-          <FoldersIcon size={20} weight="light" />
-          <span className="text-sm">New Project</span>
+          <AddressBookIcon size={20} weight="light" />
+          <span className="text-sm">New Client</span>
         </Link>
       </div>
     </div>
