@@ -1,6 +1,5 @@
-import QuotesClient from "@/components/clients/JobsClient";
+import QuotesClient from "@/components/clients/QuotesClient";
 import H1 from "@/components/H1";
-import MainContent from "@/components/MainContent";
 import { Quote } from "@/types";
 import { auth } from "@clerk/nextjs/server";
 
@@ -21,13 +20,13 @@ const Quotes = async () => {
   ];
 
   return (
-    <MainContent>
+    <div>
       <H1 className={``}>Quotes</H1>
 
       <div className={`w-full h-full`}>
         <QuotesClient data={quotes} />
       </div>
-    </MainContent>
+    </div>
   );
 };
 

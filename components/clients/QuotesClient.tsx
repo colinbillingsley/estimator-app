@@ -52,7 +52,7 @@ const columns: ColumnDef<Quote>[] = [
   },
   {
     header: "Amount",
-    cell: (quote) => `$${convertToCurrency(quote.amount)}`,
+    cell: (quote) => `${convertToCurrency(quote.amount)}`,
   },
   {
     header: "Date Created",
@@ -70,24 +70,27 @@ const columns: ColumnDef<Quote>[] = [
     header: "Actions",
     cell: (quote) => (
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <button
-            className={`p-2 hover:bg-accent/25 transition-all duration-200`}
-          >
-            <DotsThreeIcon size={16} />
-            <span className="sr-only">Open menu</span>
-          </button>
+        <DropdownMenuTrigger
+          className="p-2 transition-all duration-200 hover:bg-accent/25"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <DotsThreeIcon size={16} />
+          <span className="sr-only">Open menu</span>
         </DropdownMenuTrigger>
+
         <DropdownMenuContent align="end">
           <DropdownMenuItem>
             <PencilLineIcon size={16} className="mr-1" />
             Edit
           </DropdownMenuItem>
+
           <DropdownMenuItem>
             <CopyIcon size={16} className="mr-1" />
             Duplicate
           </DropdownMenuItem>
+
           <DropdownMenuSeparator />
+
           <DropdownMenuItem variant="destructive">
             <TrashIcon size={16} className="mr-1" />
             Delete
@@ -98,27 +101,45 @@ const columns: ColumnDef<Quote>[] = [
   },
 ];
 
-const QuotesClient = ({ data }: { data: any[] }) => {
+const QuotesClient = ({ data }: { data: Quote[] }) => {
   const [searchValue, setSearchValue] = React.useState("");
-  const [selectedFilter, setSelectedFilter] = React.useState<string>("");
+  const [selectedFilter, setSelectedFilter] = React.useState("all");
+
+  const filteredData = React.useMemo(() => {
+    let filtered = data;
+
+    if (searchValue.trim()) {
+      filtered = filtered.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase()),
+      );
+    }
+
+    if (selectedFilter !== "all") {
+      filtered = filtered.filter((item) => item.status === selectedFilter);
+    }
+
+    return filtered;
+  }, [data, searchValue, selectedFilter]);
 
   return (
-    <div className={`flex flex-col gap-4 w-full h-full`}>
-      <div className={`flex items-center gap-2 w-full h-full`}>
-        <SearchBar
-          value={searchValue}
-          onChange={setSearchValue}
-          className={``}
+    <div className="flex h-full w-full flex-col gap-4">
+      <div className="flex w-full items-center gap-2">
+        <SearchBar value={searchValue} onChange={setSearchValue} />
+
+        <Filters
+          filters={quoteStatusFilters}
+          value={selectedFilter}
+          onChange={setSelectedFilter}
         />
-        <Filters filters={quoteStatusFilters} />
       </div>
+
       <DataTable
-        data={data}
+        data={filteredData}
         columns={columns}
         emptyMessage="No quotes found."
+        getRowHref={(quote) => `/quotes/${quote.id}`}
       />
     </div>
   );
 };
-
 export default QuotesClient;

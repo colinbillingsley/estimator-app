@@ -3,6 +3,7 @@ import { Outfit, Oxanium } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
+import MainContent from "@/components/MainContent";
 
 const oxaniumHeading = Oxanium({
   subsets: ["latin"],
@@ -24,11 +25,16 @@ export default function RootLayout({
   return (
     <div
       lang="en"
-      className={cn("h-full w-full", outfit.variable, oxaniumHeading.variable)}
+      className={cn(
+        "h-screen w-full",
+        outfit.variable,
+        oxaniumHeading.variable,
+      )}
     >
-      <div className="min-h-full flex flex-col bg-zinc-50 text-zinc-950 dark:bg-black dark:text-zinc-50">
+      <div className="flex h-screen flex-col">
         <Header />
-        {children}
+
+        <MainContent>{children}</MainContent>
       </div>
     </div>
   );

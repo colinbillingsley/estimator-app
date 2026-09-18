@@ -9,7 +9,7 @@ const MainContent = ({
   className?: string;
 }) => {
   return (
-    <main className={cn(`w-full min-h-screen h-full p-4`, className)}>
+    <main className={cn("w-full h-full flex-1 overflow-y-auto p-4", className)}>
       {children}
     </main>
   );

@@ -9,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export type ColumnDef<T> = {
@@ -22,29 +21,31 @@ type DataTableProps<T> = {
   columns: ColumnDef<T>[];
   emptyMessage?: string;
   link?: string;
+  getRowHref?: (row: T) => string;
 };
 
 export const convertToCurrency = (amount: number): string => {
-  return amount.toLocaleString("en-US", {
+  return `$ ${amount.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  });
+  })}`;
 };
 
 export function DataTable<T>({
   data,
   columns,
   emptyMessage = "No results.",
-  link,
+  getRowHref,
 }: DataTableProps<T>) {
   const router = useRouter();
+
   return (
     <div className="w-full overflow-hidden border">
       <Table>
         <TableHeader>
           <TableRow>
             {columns.map((column, index) => (
-              <TableHead key={index} className={`font-heading font-semibold`}>
+              <TableHead key={index} className="font-heading font-semibold">
                 {column.header}
               </TableHead>
             ))}
@@ -54,14 +55,17 @@ export function DataTable<T>({
         <TableBody>
           {data.length > 0 ? (
             data.map((row, rowIndex) => (
-              <TableRow key={rowIndex}>
+              <TableRow
+                key={rowIndex}
+                onClick={() => {
+                  if (getRowHref) {
+                    router.push(getRowHref(row));
+                  }
+                }}
+                className={getRowHref ? "cursor-pointer" : undefined}
+              >
                 {columns.map((column, columnIndex) => (
-                  <TableCell
-                    key={columnIndex}
-                    className={`group/table-row hover:cursor-pointer`}
-                  >
-                    {column.cell(row)}
-                  </TableCell>
+                  <TableCell key={columnIndex}>{column.cell(row)}</TableCell>
                 ))}
               </TableRow>
             ))

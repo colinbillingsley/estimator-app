@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import MainContent from "../MainContent";
 import DashStatsCard from "./DashStatsCards";
 import DeadlinesCard from "./DeadlinesCard";
 import { Bid } from "@/types";
@@ -32,7 +31,7 @@ const DashboardClient = () => {
   ]);
 
   return (
-    <MainContent className={`space-y-8`}>
+    <div className={`space-y-8`}>
       <div className={`space-y-2`}>
         <h2 className={`text-xl font-semibold font-heading`}>Stats</h2>
         <div
@@ -92,7 +91,7 @@ const DashboardClient = () => {
         </h2>
         <div></div>
       </div>
-    </MainContent>
+    </div>
   );
 };
 

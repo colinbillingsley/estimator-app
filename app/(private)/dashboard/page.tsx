@@ -1,8 +1,4 @@
-import React, { useState } from "react";
 import { auth } from "@clerk/nextjs/server";
-import DashStatsCard from "@/components/dashboard/DashStatsCards";
-import MainContent from "@/components/MainContent";
-import DeadlinesCard from "@/components/dashboard/DeadlinesCard";
 import DashboardClient from "@/components/dashboard/DashboardClient";
 
 const Dashboard = async () => {

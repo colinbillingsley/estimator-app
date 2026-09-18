@@ -2,6 +2,7 @@
 
 import { Filter } from "@/types";
 import React from "react";
+
 import {
   Select,
   SelectContent,
@@ -10,18 +11,27 @@ import {
   SelectValue,
 } from "./ui/select";
 
-const Filters = ({ filters }: { filters: Filter[] }) => {
-  const [selectedFilter, setSelectedFilter] = React.useState<string | null>(
-    null,
-  );
+type FiltersProps = {
+  filters: Filter[];
+  value: string;
+  onChange: (value: string) => void;
+};
 
+const Filters = ({ filters, value, onChange }: FiltersProps) => {
   const selectedFilterName =
-    filters.find((filter) => filter.value === selectedFilter)?.name || "All";
+    filters.find((filter) => filter.value === value)?.name ?? "All";
 
   return (
     <div className="flex w-full items-center gap-2">
-      <Select value={selectedFilter} onValueChange={setSelectedFilter}>
-        <SelectTrigger className=" p-4 border border-border">
+      <Select
+        value={value}
+        onValueChange={(value) => {
+          if (value) {
+            onChange(value);
+          }
+        }}
+      >
+        <SelectTrigger className="border border-border p-4">
           <SelectValue>Status | {selectedFilterName}</SelectValue>
         </SelectTrigger>
 

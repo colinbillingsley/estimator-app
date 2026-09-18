@@ -66,7 +66,7 @@ const Sidebar = () => {
   return (
     <div
       className={cn(
-        `relative w-18 md:w-48 ${sidebarOpen ? "md:w-48" : "md:w-18"} bg-secondary px-2 py-4 flex flex-col items-center justify-between gap-6 transition-all duration-200`,
+        `relative z-50 w-18 md:w-48 ${sidebarOpen ? "md:w-48" : "md:w-18"} bg-secondary px-2 py-4 flex flex-col items-center justify-between gap-6 transition-all duration-200`,
       )}
     >
       <div className="flex items-center justify-center gap-2 w-full overflow-hidden">

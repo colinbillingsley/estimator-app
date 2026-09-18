@@ -10,13 +10,17 @@ const HeaderClient = ({ user, organization, currentDate }: any) => {
   return (
     <div
       className={cn(
-        "p-6 w-full flex items-center justify-between border-b border-border",
+        "p-6 w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border",
       )}
     >
       <div className="w-full">
-        <p className="text-lg font-semibold">{organization.name}</p>
-        <p className="text-2xl font-bold">Good morning, {user.firstName}!</p>
-        <p>{currentDate}</p>
+        <p className="text-base sm:text-lg font-semibold">
+          {organization.name}
+        </p>
+        <p className="text-xl sm:text-2xl font-bold">
+          Good morning, {user.firstName}!
+        </p>
+        <p className={`text-sm sm:text-base`}>{currentDate}</p>
       </div>
 
       <div>

@@ -36,25 +36,19 @@ const CreateNewButton = ({
   }, [createOpen]);
 
   return (
-    <div className="relative">
+    <div className="w-fit relative">
       <Tooltip open={!createOpen && tooltipOpen} onOpenChange={setTooltipOpen}>
-        <TooltipTrigger>
-          <div
-            onClick={() => {
-              setCreateOpen(!createOpen);
-              setTooltipOpen(false); // 👈 force close
-            }}
-            className="p-2 bg-primary flex items-center gap-2 hover:bg-primary/80 hover:cursor-pointer active:translate-y-[2px]"
-          >
-            <PlusIcon className="size-4" />
-            <TriangleIcon
-              className={cn(
-                "size-2 transition-all duration-200",
-                createOpen ? "rotate-0" : "rotate-180",
-              )}
-              weight="fill"
-            />
-          </div>
+        <TooltipTrigger
+          onClick={() => {
+            setCreateOpen(!createOpen);
+            setTooltipOpen(false); // 👈 force close
+          }}
+          className="px-4 py-2 bg-primary flex items-center gap-2 hover:bg-primary/80 hover:cursor-pointer active:translate-y-[2px] transition-all duration-200"
+        >
+          <PlusIcon className="size-4" />
+          <span className="block whitespace-nowrap text-sm text-primary-foreground">
+            Create New
+          </span>
         </TooltipTrigger>
 
         <TooltipContent side="bottom" sideOffset={10}>
@@ -65,7 +59,7 @@ const CreateNewButton = ({
       {/* 👇 OUTSIDE tooltip */}
       <div
         className={cn(
-          "absolute flex flex-col bg-white border border-border top-10 right-0 z-10 w-[200px] hover:cursor-pointer tranistion-all duration-200",
+          "absolute flex flex-col bg-white border border-border top-10 left-0 sm:left-auto sm:right-0 z-10 w-[200px] hover:cursor-pointer transition-all duration-200",
           createOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-10 opacity-0 pointer-events-none",

@@ -128,3 +128,35 @@
     @apply font-sans;
   }
 }
+
+@keyframes line-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-line-item-in {
+  animation: line-item-in 200ms ease-out;
+}
+
+@keyframes line-item-out {
+  from {
+    opacity: 0;
+    transform: translateX();
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(8px);
+  }
+}
+
+.animate-line-item-out {
+  animation: line-item-out 200ms ease-out;
+}
