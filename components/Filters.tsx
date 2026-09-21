@@ -12,17 +12,18 @@ import {
 } from "./ui/select";
 
 type FiltersProps = {
+  title: string;
   filters: Filter[];
   value: string;
   onChange: (value: string) => void;
 };
 
-const Filters = ({ filters, value, onChange }: FiltersProps) => {
+const Filters = ({ title, filters, value, onChange }: FiltersProps) => {
   const selectedFilterName =
     filters.find((filter) => filter.value === value)?.name ?? "All";
 
   return (
-    <div className="flex w-full items-center gap-2">
+    <div className="flex items-center gap-2">
       <Select
         value={value}
         onValueChange={(value) => {
@@ -32,7 +33,9 @@ const Filters = ({ filters, value, onChange }: FiltersProps) => {
         }}
       >
         <SelectTrigger className="border border-border p-4">
-          <SelectValue>Status | {selectedFilterName}</SelectValue>
+          <SelectValue>
+            {title} | {selectedFilterName}
+          </SelectValue>
         </SelectTrigger>
 
         <SelectContent>

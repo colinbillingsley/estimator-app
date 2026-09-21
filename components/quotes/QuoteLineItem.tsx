@@ -42,7 +42,7 @@ export function QuoteLineItem({ index, onRemove }: QuoteLineItemProps) {
   const total = (Number(quantity) || 0) * (Number(unitPrice) || 0);
 
   return (
-    <div className="space-y-4 p-4">
+    <div className="space-y-4 p-4 bg-card">
       {/* Main row */}
       <div className="flex items-center gap-4 w-full flex-wrap">
         {/* Item */}
@@ -109,10 +109,10 @@ export function QuoteLineItem({ index, onRemove }: QuoteLineItemProps) {
       <div className="flex items-center justify-end">
         <Dialog open={deleteOpen} onOpenChange={setDeleteOpen}>
           <DialogTrigger
-            className={`flex items-center gap-2 p-2 hover:bg-red-600/5 hover:cursor-pointer transition-all duration-200`}
+            className={`flex items-center gap-2 p-2 text-red-600 border border-red-600 hover:bg-red-600/5 hover:cursor-pointer transition-all duration-200`}
           >
             <TrashIcon size={16} color="red" />
-            <span className="text-xs text-red-600">Delete</span>
+            <span className="text-xs">Delete</span>
 
             <span className="sr-only">Remove line item</span>
           </DialogTrigger>
@@ -132,7 +132,14 @@ export function QuoteLineItem({ index, onRemove }: QuoteLineItemProps) {
               >
                 Cancel
               </Button>
-              <Button variant="destructive" size="lg" onClick={onRemove}>
+              <Button
+                variant="destructive"
+                size="lg"
+                onClick={() => {
+                  setDeleteOpen(false);
+                  onRemove();
+                }}
+              >
                 <TrashIcon size={16} color="red" />
                 <span className=" text-red-600">Delete</span>
 

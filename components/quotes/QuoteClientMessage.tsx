@@ -1,6 +1,5 @@
 "use client";
 import { useFormContext } from "react-hook-form";
-import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import type { QuoteFormValues } from "@/schemas/quote";
 import { Switch } from "../ui/switch";
@@ -16,7 +15,7 @@ export function QuoteClientMessage({
   const { register } = useFormContext<QuoteFormValues>();
 
   return (
-    <section className="flex flex-col gap-4 border p-4 overflow-hidden">
+    <section className="flex flex-col gap-4 border p-4 overflow-hidden bg-white">
       <div className="flex items-center gap-6">
         <Switch
           id="includeClientMessage"

@@ -15,7 +15,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-export function NewQuoteForm() {
+export function NewQuoteForm({ numberOfQuotes }: { numberOfQuotes: number }) {
   const [includeClientMessage, setIncludeClientMessage] = useState(false);
   const [includeTerms, setIncludeTerms] = useState(false);
 
@@ -27,7 +27,8 @@ export function NewQuoteForm() {
     defaultValues: {
       title: "",
       clientId: "",
-      quoteNumber: "",
+      quoteNumber: `${createQuoteNumber()}`,
+      propertyAddress: "",
       salespersonId: "",
 
       lineItems: [],
@@ -61,6 +62,18 @@ export function NewQuoteForm() {
     router.push("/quotes", { scroll: true });
   }
 
+  function createQuoteNumber(): string {
+    if (numberOfQuotes < 10) {
+      return `Q-000${numberOfQuotes}`;
+    } else if (numberOfQuotes < 100) {
+      return `Q-00${numberOfQuotes}`;
+    } else if (numberOfQuotes < 1000) {
+      return `Q-0${numberOfQuotes}`;
+    } else {
+      return `Q-${numberOfQuotes}`;
+    }
+  }
+
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -74,7 +87,7 @@ export function NewQuoteForm() {
         </div>
 
         {/* Quote Details */}
-        <QuoteDetails />
+        <QuoteDetails numberOfQuotes={numberOfQuotes} />
 
         {/* Line Items */}
         <QuoteLineItems />
@@ -93,9 +106,6 @@ export function NewQuoteForm() {
           includeTerms={includeTerms}
           setIncludeTerms={setIncludeTerms}
         />
-
-        {/* Attachments */}
-        {/* <QuoteAttachments /> */}
 
         {/* Actions */}
         <div className="flex justify-end gap-3 border-t pt-6">

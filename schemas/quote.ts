@@ -25,7 +25,7 @@ export const quoteSchema = z.object({
 
   propertyAddress: z.string().min(1, "Property address is required"),
 
-  salespersonId: z.string().optional(),
+  salespersonId: z.string().min(1, "Salesperson is required"),
 
   lineItems: z.array(quoteLineItemSchema),
 

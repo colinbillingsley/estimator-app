@@ -9,7 +9,12 @@ const MainContent = ({
   className?: string;
 }) => {
   return (
-    <main className={cn("w-full h-full flex-1 overflow-y-auto p-4", className)}>
+    <main
+      className={cn(
+        `w-full h-full flex-1 overflow-y-auto p-4 bg-background`,
+        className,
+      )}
+    >
       {children}
     </main>
   );

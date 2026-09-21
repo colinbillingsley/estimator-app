@@ -8,16 +8,18 @@ const SearchBar = ({
   value,
   onChange,
   className,
+  placeholder = "Search...",
 }: {
   value: string;
   onChange: (value: string) => void;
   className?: string;
+  placeholder?: string;
 }) => {
   return (
     <div className="relative w-full">
       <Input
         type="text"
-        placeholder="Search..."
+        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn("", className)}

@@ -5,8 +5,9 @@ import { useController, useFormContext } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 
 import type { QuoteFormValues } from "@/schemas/quote";
+import { cn } from "@/lib/utils";
 
-export function QuoteDetails() {
+export function QuoteDetails({ numberOfQuotes }: { numberOfQuotes: number }) {
   const { control } = useFormContext<QuoteFormValues>();
 
   const title = useController({
@@ -35,7 +36,7 @@ export function QuoteDetails() {
   });
 
   return (
-    <section className="border border-border p-4">
+    <section className="border p-4 bg-white">
       <div className={`mb-4`}>
         <h2 className="font-heading text-lg font-semibold">Quote Details</h2>
 
@@ -50,7 +51,14 @@ export function QuoteDetails() {
           <div className="space-y-2">
             <label className="text-sm font-medium">Quote Title</label>
 
-            <Input placeholder="Office Building Electrical" {...title.field} />
+            <Input
+              placeholder="Office Building Electrical"
+              {...title.field}
+              className={cn(
+                ``,
+                title.fieldState.error ? `border-destructive` : ``,
+              )}
+            />
 
             {title.fieldState.error && (
               <p className="text-sm text-destructive">
@@ -63,7 +71,14 @@ export function QuoteDetails() {
           <div className="space-y-2">
             <label className="text-sm font-medium">Client</label>
 
-            <Input placeholder="Select client" {...clientId.field} />
+            <Input
+              placeholder="Select client"
+              {...clientId.field}
+              className={cn(
+                ``,
+                clientId.fieldState.error ? `border-destructive` : ``,
+              )}
+            />
 
             {clientId.fieldState.error && (
               <p className="text-sm text-destructive">
@@ -79,16 +94,15 @@ export function QuoteDetails() {
             <Input
               placeholder="Enter property address"
               {...propertyAddress.field}
+              className={cn(
+                ``,
+                propertyAddress.fieldState.error ? `border-destructive` : ``,
+              )}
             />
 
             {propertyAddress.fieldState.error && (
               <p className="text-sm text-destructive">
                 {propertyAddress.fieldState.error.message}
-              </p>
-            )}
-            {clientId.fieldState.error && (
-              <p className="text-sm text-destructive">
-                {clientId.fieldState.error.message}
               </p>
             )}
           </div>
@@ -99,7 +113,14 @@ export function QuoteDetails() {
           <div className="space-y-2">
             <label className="text-sm font-medium">Quote Number</label>
 
-            <Input placeholder="Q-1001" {...quoteNumber.field} />
+            <Input
+              placeholder="Q-1001"
+              {...quoteNumber.field}
+              className={cn(
+                ``,
+                quoteNumber.fieldState.error ? `border-destructive` : ``,
+              )}
+            />
 
             {quoteNumber.fieldState.error && (
               <p className="text-sm text-destructive">
@@ -112,7 +133,20 @@ export function QuoteDetails() {
           <div className="space-y-2">
             <label className="text-sm font-medium">Salesperson</label>
 
-            <Input placeholder="Select salesperson" {...salespersonId.field} />
+            <Input
+              placeholder="Select salesperson"
+              {...salespersonId.field}
+              className={cn(
+                ``,
+                salespersonId.fieldState.error ? `border-destructive` : ``,
+              )}
+            />
+
+            {salespersonId.fieldState.error && (
+              <p className="text-sm text-destructive">
+                {salespersonId.fieldState.error.message}
+              </p>
+            )}
           </div>
         </div>
       </div>

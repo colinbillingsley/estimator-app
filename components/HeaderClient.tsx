@@ -10,7 +10,7 @@ const HeaderClient = ({ user, organization, currentDate }: any) => {
   return (
     <div
       className={cn(
-        "p-6 w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border",
+        "p-6 w-full bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border",
       )}
     >
       <div className="w-full">

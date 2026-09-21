@@ -107,7 +107,7 @@ export function QuotePricing() {
   }, [lineItems, markupRate, overheadRate, discount, discountType, taxRate]);
 
   return (
-    <section className="space-y-6 p-4 border-y-4">
+    <section className="space-y-6 p-4 border-y-2 border-border/25 bg-white">
       <div>
         <h2 className="font-heading text-lg font-semibold">Pricing</h2>
 

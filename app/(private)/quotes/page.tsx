@@ -1,27 +1,20 @@
-import QuotesClient from "@/components/clients/QuotesClient";
+import QuotesClient from "@/components/quotes/QuotesClient";
 import H1 from "@/components/H1";
-import { Quote } from "@/types";
 import { auth } from "@clerk/nextjs/server";
+import { quotes } from "@/data";
 
 const Quotes = async () => {
   // Redirects to the sign-in route if the user is not signed in
   await auth.protect();
 
-  const quotes: Quote[] = [
-    {
-      id: "1",
-      amount: 1139450.74,
-      name: "Moco Public Safety Facility",
-      generalContractor: "Reeves & Young",
-      dateCreated: new Date("2024-06-30"),
-      status: "Awaiting Response",
-      link: "/clients/quotes/1",
-    },
-  ];
-
   return (
     <div>
-      <H1 className={``}>Quotes</H1>
+      <div className="mb-4">
+        <H1 className={`mb-0`}>Quotes</H1>
+        <span className="text-muted-foreground">
+          Manage and track your estimates and bids.
+        </span>
+      </div>
 
       <div className={`w-full h-full`}>
         <QuotesClient data={quotes} />

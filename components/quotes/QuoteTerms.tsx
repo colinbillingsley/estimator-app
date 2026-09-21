@@ -18,7 +18,7 @@ export function QuoteTerms({
   const { register } = useFormContext<QuoteFormValues>();
 
   return (
-    <section className="flex flex-col gap-4 border p-4 overflow-hidden">
+    <section className="flex flex-col gap-4 border p-4 overflow-hidden bg-white">
       <div className="flex items-center gap-6">
         <Switch
           id="includeTerms"

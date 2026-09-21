@@ -43,7 +43,7 @@ const CreateNewButton = ({
             setCreateOpen(!createOpen);
             setTooltipOpen(false); // 👈 force close
           }}
-          className="px-4 py-2 bg-primary flex items-center gap-2 hover:bg-primary/80 hover:cursor-pointer active:translate-y-[2px] transition-all duration-200"
+          className="px-4 py-2 bg-primary flex items-center gap-2 rounded-md hover:bg-primary/80 hover:cursor-pointer active:translate-y-[2px] transition-all duration-200"
         >
           <PlusIcon className="size-4" />
           <span className="block whitespace-nowrap text-sm text-primary-foreground">

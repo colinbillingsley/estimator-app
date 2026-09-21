@@ -43,11 +43,11 @@ export function QuoteLineItems() {
     setTimeout(() => {
       remove(index);
       setRemovingId(null);
-    }, 200);
+    }, 300);
   }
 
   return (
-    <section className="space-y-6 border p-4">
+    <section className="space-y-6 border p-4 bg-white">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
@@ -58,14 +58,24 @@ export function QuoteLineItems() {
           </p>
         </div>
 
-        <Button type="button" variant="outline" size="lg" onClick={addItem}>
+        <Button
+          type="button"
+          size="lg"
+          className="hover:cursor-pointer"
+          onClick={addItem}
+        >
           <RowsPlusBottomIcon size={16} />
           Add Item
         </Button>
       </div>
 
       {/* Items */}
-      <div className={cn("border", fields.length === 0 && "border-dashed")}>
+      <div
+        className={cn(
+          "border bg-background/50",
+          fields.length === 0 && "border-dashed",
+        )}
+      >
         {fields.length > 0 ? (
           <div className="divide-y">
             {fields.map((field, index) => (
